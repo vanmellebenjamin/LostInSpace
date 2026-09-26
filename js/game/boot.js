@@ -710,6 +710,10 @@ function fit_canvas_to_viewport() {
 }
 
 function init() {
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js").catch(function() {});
+    }
+
     // Init engine
     world = new createjs.Stage("myCanvas");
     var container = new createjs.Container();
