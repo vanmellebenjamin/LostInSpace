@@ -1,6 +1,7 @@
 var CONSTANT_G = 981;
 var CONSTANT_GRAV = 0.0000006;
 var CONSTANT_METER_PER_PIXEL = 3;
+var SIMULATION_SPEED_FACTOR = 0.55;
 
 /**
  * Not pure function, it modifies the objects
@@ -142,7 +143,7 @@ function physic_engine (elements, keys, universal_gravitation, earth_gravitation
         };
 
         // Define the time elpsed for last tick
-        var elapsed_time = world_ticker.getMeasuredTickTime() / 100;
+        var elapsed_time = (world_ticker.getMeasuredTickTime() / 100) * SIMULATION_SPEED_FACTOR;
         // Compute result for each object
         if (universal_gravitation) {
             compute_force_from_gravitation();
