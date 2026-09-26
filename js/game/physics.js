@@ -1,7 +1,7 @@
 var CONSTANT_G = 981;
 var CONSTANT_GRAV = 0.0000006;
 var CONSTANT_METER_PER_PIXEL = 3;
-var SIMULATION_SPEED_FACTOR = 0.55;
+var SIMULATION_SPEED_FACTOR = 0.20;
 
 /**
  * Not pure function, it modifies the objects
