@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style>
         html, body {
@@ -13,10 +13,27 @@
             justify-content: center;
             height: 100%;
         }
+        #rotate-prompt {
+            display: none;
+            color: #eaffff;
+            font-family: monospace;
+            font-size: 20px;
+            text-align: center;
+            padding: 0 30px;
+        }
+        @media (orientation: portrait) {
+            #myCanvas {
+                display: none;
+            }
+            #rotate-prompt {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
 <canvas id="myCanvas" width="900" height="640" style="border:1px solid #222; background-color:#04040c; box-shadow:0 0 20px rgba(90,60,180,0.35); touch-action:none;"></canvas>
+<div id="rotate-prompt">Please rotate your device to landscape.</div>
 
 <script type="text/javascript" src="js/libs/easeljs-1.0.0.min.js"></script>
 <script type="text/javascript" src="js/game/levels.js"></script>

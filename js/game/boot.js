@@ -696,10 +696,27 @@ function load_level(levelNumber) {
     resetGame();
 }
 
+// Scales the canvas's CSS display size to fit the current viewport while
+// keeping its 900x640 internal resolution untouched — every level
+// coordinate and physics constant stays valid. EaselJS's Stage maps
+// pointer positions through the ratio between the canvas's CSS size and
+// its width/height attributes, so touch/mouse/hit-testing keep working
+// unchanged at any scale.
+function fit_canvas_to_viewport() {
+    var canvasEl = document.getElementById("myCanvas");
+    var scale = Math.min(window.innerWidth / world_width, window.innerHeight / world_height);
+    canvasEl.style.width = (world_width * scale) + "px";
+    canvasEl.style.height = (world_height * scale) + "px";
+}
+
 function init() {
     // Init engine
     world = new createjs.Stage("myCanvas");
     var container = new createjs.Container();
+
+    fit_canvas_to_viewport();
+    window.addEventListener("resize", fit_canvas_to_viewport);
+    window.addEventListener("orientationchange", fit_canvas_to_viewport);
 
     starfield_shape = createStarfield(world_width, world_height);
     world.addChild(starfield_shape);
